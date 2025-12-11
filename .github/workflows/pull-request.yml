@@ -1,0 +1,17 @@
+name: Pull request
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'jetbrains'
+          java-version: '21'
+      - name: Build compose app
+        run: ./gradlew :composeApp:assembleDebug
