@@ -3,15 +3,67 @@ name: Pull request
 on: pull_request
 
 jobs:
-  build:
+  build-android:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-      - name: Setup Java
+      - name: Set up java
         uses: actions/setup-java@v5
         with:
           distribution: 'jetbrains'
           java-version: '21'
-      - name: Build compose app
+      - name: Build android app
         run: ./gradlew :composeApp:assembleDebug
+
+  build-ios:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'jetbrains'
+          java-version: '21'
+      - name: Build ios app
+        run: ./gradlew :composeApp:compileKotlinIosSimulatorArm64
+
+  build-jvm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'jetbrains'
+          java-version: '21'
+      - name: Build jvm app
+        run: ./gradlew :composeApp:prepareAppResources
+
+  build-wasm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'jetbrains'
+          java-version: '21'
+      - name: Build wasm app
+        run: ./gradlew :composeApp:wasmJsDevelopmentExecutableCompileSync
+
+  build-js:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+      - name: Set up java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'jetbrains'
+          java-version: '21'
+      - name: Build js app
+        run: ./gradlew :composeApp:jsDevelopmentExecutableCompileSync
