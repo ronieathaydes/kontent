@@ -1,3 +1,5 @@
+@file:Suppress("Filename")
+
 package com.ronieathaydes.kontent
 
 import androidx.compose.ui.window.Window
