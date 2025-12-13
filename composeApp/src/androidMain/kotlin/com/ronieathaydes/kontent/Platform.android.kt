@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package com.ronieathaydes.kontent
 
 import android.os.Build
