@@ -1,7 +1,6 @@
 package com.ronieathaydes.kontent.data.network
 
-import com.ronieathaydes.kontent.data.network.error.HttpGenericException
-import com.ronieathaydes.kontent.data.network.error.HttpParseException
+import com.ronieathaydes.kontent.data.network.error.HttpException
 import io.ktor.client.call.DoubleReceiveException
 import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
@@ -14,15 +13,15 @@ suspend inline fun <reified T> HttpResponse.bodyAsResult(): Result<T> =
             try {
                 Result.success(body())
             } catch (cause: NoTransformationFoundException) {
-                Result.failure(HttpParseException(cause = cause))
+                Result.failure(HttpException(cause = cause))
             } catch (cause: DoubleReceiveException) {
-                Result.failure(HttpGenericException(cause = cause))
+                Result.failure(HttpException(cause = cause))
             }
         }
 
         else -> {
             Result.failure(
-                HttpGenericException(
+                HttpException(
                     message = "Request failed with ${status.value}.",
                 )
             )
