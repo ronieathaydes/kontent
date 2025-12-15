@@ -1,4 +1,4 @@
-package com.ronieathaydes.kontent.data.network.error
+package com.ronieathaydes.kontent.network.error
 
 class HttpException(
     override val message: String? = null,

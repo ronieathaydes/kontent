@@ -17,9 +17,11 @@ import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.stateIn
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class TimelineViewModel(
-    private val repository: MastodonRepository = MastodonRepository(),
+    private val repository: MastodonRepository,
 ) : ViewModel() {
 
     val uiState: StateFlow<TimelineUiState> = flow {
