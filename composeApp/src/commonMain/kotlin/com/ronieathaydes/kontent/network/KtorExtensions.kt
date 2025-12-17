@@ -1,6 +1,6 @@
-package com.ronieathaydes.kontent.data.network
+package com.ronieathaydes.kontent.network
 
-import com.ronieathaydes.kontent.data.network.error.HttpException
+import com.ronieathaydes.kontent.network.error.HttpException
 import io.ktor.client.call.DoubleReceiveException
 import io.ktor.client.call.NoTransformationFoundException
 import io.ktor.client.call.body
