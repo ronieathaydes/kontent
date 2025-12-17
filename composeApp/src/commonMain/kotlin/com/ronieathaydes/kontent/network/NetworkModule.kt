@@ -9,7 +9,6 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.annotation.Configuration
 import org.koin.core.annotation.Module
-import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 
 @Module
@@ -23,7 +22,7 @@ class NetworkModule {
         }
 
     @Single
-    @Named("default")
+    @DefaultHttpClient
     fun providesDefaultHttpClient(json: Json): HttpClient =
         HttpClient {
             defaultRequest {
