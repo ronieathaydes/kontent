@@ -20,7 +20,7 @@ fun TimelineLoading(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TimelineLoadingPreview() {
     TimelineLoading()

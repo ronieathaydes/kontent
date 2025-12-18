@@ -24,7 +24,7 @@ fun TimelineError(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TimelineErrorPreview() {
     TimelineError(

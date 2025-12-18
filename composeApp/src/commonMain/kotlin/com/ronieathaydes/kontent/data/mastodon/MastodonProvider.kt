@@ -5,7 +5,7 @@ import com.ronieathaydes.kontent.domain.model.Status
 import com.ronieathaydes.kontent.domain.provider.KontentProvider
 import org.koin.core.annotation.Factory
 
-@Factory(binds = [KontentProvider::class])
+@Factory
 class MastodonProvider(
     private val timelineRepository: TimelineRepository,
 ) : KontentProvider {
