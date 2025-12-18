@@ -33,7 +33,7 @@ class TimelineViewModel(
     )
 
     private suspend fun getContent(): TimelineUiState =
-        repository.getPublicTimelines()
+        repository.getHomeTimeline()
             .fold(
                 onSuccess = { statuses ->
                     Content(

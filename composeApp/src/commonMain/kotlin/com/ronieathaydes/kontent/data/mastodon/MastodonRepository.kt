@@ -10,7 +10,7 @@ import org.koin.core.annotation.Factory
 class MastodonRepository(
     @MastodonHttpClient private val httpClient: HttpClient,
 ) {
-    suspend fun getPublicTimelines(): Result<List<StatusApiModel>> =
+    suspend fun getHomeTimeline(): Result<List<StatusApiModel>> =
         httpClient.get(urlString = "v1/timelines/home")
             .bodyAsResult()
 }
