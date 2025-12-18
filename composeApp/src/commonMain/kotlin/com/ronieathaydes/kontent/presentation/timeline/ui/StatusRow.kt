@@ -4,16 +4,20 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ListItem
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import com.ronieathaydes.kontent.design.token.DimensionTokens
 import com.ronieathaydes.kontent.presentation.timeline.model.StatusUiModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
@@ -21,68 +25,84 @@ import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 
 @Composable
 fun StatusRow(uiModel: StatusUiModel) {
-    ListItem(
-        headlineContent = {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                verticalArrangement = Arrangement.spacedBy(space = 8.dp),
-            ) {
-                Text(
-                    text = uiModel.author,
-                )
-                if (uiModel.content != null) {
-                    Text(
-                        text = uiModel.content,
-                    )
-                }
-                if (uiModel.sharedStatus != null) {
-                    SharedStatusRow(
-                        uiModel.sharedStatus,
-                    )
-                }
-            }
-        },
-    )
-}
-
-@Composable
-private fun SharedStatusRow(uiModel: StatusUiModel) {
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.outline,
-                shape = RoundedCornerShape(
-                    topStart = 8.dp,
-                    topEnd = 8.dp,
-                    bottomStart = 8.dp,
-                    bottomEnd = 8.dp,
-                ),
-            ),
+            .padding(all = DimensionTokens.Spacing.medium),
+        verticalArrangement = Arrangement.spacedBy(space = DimensionTokens.Spacing.small),
     ) {
-        Column(
-            modifier = Modifier.padding(all = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(space = 8.dp),
-        ) {
+        AuthorRow(
+            authorAvatarUrl = uiModel.authorAvatarUrl,
+            authorName = uiModel.authorName,
+            authorUsername = uiModel.authorUsername,
+        )
+        if (uiModel.content != null) {
             Text(
-                text = uiModel.author,
+                text = uiModel.content,
+                style = MaterialTheme.typography.bodyMedium,
             )
-            if (uiModel.content != null) {
-                Text(text = uiModel.content)
+        }
+        if (uiModel.sharedStatus != null) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(
+                        width = DimensionTokens.Size.divider,
+                        color = MaterialTheme.colorScheme.outline,
+                        shape = MaterialTheme.shapes.small
+                    ),
+            ) {
+                StatusRow(
+                    uiModel = uiModel.sharedStatus,
+                )
             }
         }
     }
 }
 
-@Preview
+@Composable
+private fun AuthorRow(
+    authorAvatarUrl: String,
+    authorName: String,
+    authorUsername: String,
+) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(space = DimensionTokens.Spacing.small),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        AsyncImage(
+            model = authorAvatarUrl,
+            contentDescription = null,
+            modifier = Modifier
+                .size(size = DimensionTokens.Size.avatar)
+                .clip(CircleShape),
+        )
+        Column {
+            Text(
+                text = authorName,
+                style = MaterialTheme.typography.titleMedium,
+            )
+            Text(
+                text = authorUsername,
+                style = MaterialTheme.typography.labelSmall,
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
 @Composable
 private fun StatusRowPreview(
     @PreviewParameter(provider = StatusRowPreviewProvider::class) uiModel: StatusUiModel,
 ) {
-    StatusRow(
-        uiModel = uiModel,
-    )
+    Box(
+        modifier = Modifier.padding(all = DimensionTokens.Spacing.medium),
+    ) {
+        StatusRow(
+            uiModel = uiModel,
+        )
+    }
 }
 
 class StatusRowPreviewProvider : PreviewParameterProvider<StatusUiModel> {
@@ -95,16 +115,22 @@ class StatusRowPreviewProvider : PreviewParameterProvider<StatusUiModel> {
 
 val status = StatusUiModel(
     content = AnnotatedString(text = "Status #1"),
-    author = "Author 1 (author1)",
+    authorName = "Author 1",
+    authorUsername = "author1",
+    authorAvatarUrl = "authorAvatarUrl",
     sharedStatus = null,
 )
 
 val sharedStatus = StatusUiModel(
     content = AnnotatedString(text = "Status #2"),
-    author = "Author 2 (author2)",
+    authorName = "Author 2",
+    authorUsername = "author2",
+    authorAvatarUrl = "authorAvatarUrl",
     sharedStatus = StatusUiModel(
         content = AnnotatedString(text = "Status #3"),
-        author = "Author 3 (author3)",
+        authorName = "Author 3",
+        authorUsername = "author3",
+        authorAvatarUrl = "authorAvatarUrl",
         sharedStatus = null,
     ),
 )

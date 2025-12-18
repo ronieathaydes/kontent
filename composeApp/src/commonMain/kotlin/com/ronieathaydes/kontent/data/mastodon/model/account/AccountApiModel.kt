@@ -21,4 +21,10 @@ data class AccountApiModel(
      */
     @SerialName(value = "display_name")
     val displayName: String,
+
+    /**
+     * An image icon that is shown next to statuses and in the profile.
+     */
+    @SerialName(value = "avatar")
+    val avatar: String,
 )

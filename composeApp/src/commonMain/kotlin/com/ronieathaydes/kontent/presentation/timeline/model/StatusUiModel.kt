@@ -4,6 +4,8 @@ import androidx.compose.ui.text.AnnotatedString
 
 data class StatusUiModel(
     val content: AnnotatedString?,
-    val author: String,
+    val authorName: String,
+    val authorUsername: String,
+    val authorAvatarUrl: String,
     val sharedStatus: StatusUiModel?,
 )
