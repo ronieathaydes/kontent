@@ -9,5 +9,6 @@ class AccountApiModelMapper {
         Account(
             username = model.acct,
             displayName = model.displayName,
+            avatarUrl = model.avatar,
         )
 }

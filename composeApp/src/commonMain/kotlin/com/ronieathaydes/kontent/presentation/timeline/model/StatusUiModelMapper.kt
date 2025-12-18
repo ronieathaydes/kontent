@@ -14,7 +14,9 @@ class StatusUiModelMapper {
     fun map(status: Status): StatusUiModel =
         StatusUiModel(
             content = status.content?.let { htmlToAnnotatedString(html = status.content, style = HTML_STYLE) },
-            author = "${status.author.displayName} (${status.author.username})",
+            authorName = status.author.displayName,
+            authorUsername = status.author.username,
+            authorAvatarUrl = status.author.avatarUrl,
             sharedStatus = status.sharedStatus?.let(::map),
         )
 
