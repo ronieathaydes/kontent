@@ -1,6 +1,6 @@
-package com.ronieathaydes.kontent.data.mastodon
+package com.ronieathaydes.kontent.data.mastodon.di
 
-import com.ronieathaydes.kontent.network.DefaultHttpClient
+import com.ronieathaydes.kontent.network.http.DefaultHttpClient
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.client.request.header

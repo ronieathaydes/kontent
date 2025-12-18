@@ -1,4 +1,4 @@
-package com.ronieathaydes.kontent.data.mastodon
+package com.ronieathaydes.kontent.data.mastodon.di
 
 import org.koin.core.annotation.Named
 
