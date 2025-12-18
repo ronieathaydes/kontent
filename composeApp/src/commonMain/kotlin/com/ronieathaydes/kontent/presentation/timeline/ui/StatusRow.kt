@@ -78,9 +78,7 @@ private fun AuthorRow(
                 .size(size = DimensionTokens.Size.avatar)
                 .clip(CircleShape),
         )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(space = DimensionTokens.Spacing.extraSmall),
-        ) {
+        Column {
             Text(
                 text = authorName,
                 style = MaterialTheme.typography.titleMedium,
