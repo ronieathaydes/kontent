@@ -30,7 +30,7 @@ fun TimelineContent(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TimelineContentPreview(
     @PreviewParameter(provider = TimelineContentPreviewProvider::class) uiState: Content,
