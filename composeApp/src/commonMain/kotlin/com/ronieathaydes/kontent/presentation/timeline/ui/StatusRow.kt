@@ -36,36 +36,43 @@ fun StatusRow(uiModel: StatusUiModel) {
                     )
                 }
                 if (uiModel.sharedStatus != null) {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .border(
-                                width = 1.dp,
-                                color = MaterialTheme.colorScheme.outline,
-                                shape = RoundedCornerShape(
-                                    topStart = 8.dp,
-                                    topEnd = 8.dp,
-                                    bottomStart = 8.dp,
-                                    bottomEnd = 8.dp,
-                                ),
-                            ),
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(all = 16.dp),
-                            verticalArrangement = Arrangement.spacedBy(space = 8.dp),
-                        ) {
-                            Text(
-                                text = uiModel.sharedStatus.author,
-                            )
-                            if (uiModel.sharedStatus.content != null) {
-                                Text(text = uiModel.sharedStatus.content)
-                            }
-                        }
-                    }
+                    SharedStatusRow(
+                        uiModel.sharedStatus,
+                    )
                 }
             }
         },
     )
+}
+
+@Composable
+private fun SharedStatusRow(uiModel: StatusUiModel) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .border(
+                width = 1.dp,
+                color = MaterialTheme.colorScheme.outline,
+                shape = RoundedCornerShape(
+                    topStart = 8.dp,
+                    topEnd = 8.dp,
+                    bottomStart = 8.dp,
+                    bottomEnd = 8.dp,
+                ),
+            ),
+    ) {
+        Column(
+            modifier = Modifier.padding(all = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(space = 8.dp),
+        ) {
+            Text(
+                text = uiModel.author,
+            )
+            if (uiModel.content != null) {
+                Text(text = uiModel.content)
+            }
+        }
+    }
 }
 
 @Preview
