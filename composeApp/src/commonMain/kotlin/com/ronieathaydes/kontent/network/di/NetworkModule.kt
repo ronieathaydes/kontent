@@ -1,5 +1,6 @@
-package com.ronieathaydes.kontent.network
+package com.ronieathaydes.kontent.network.di
 
+import com.ronieathaydes.kontent.network.http.DefaultHttpClient
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest

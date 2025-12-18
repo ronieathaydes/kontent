@@ -1,4 +1,4 @@
-package com.ronieathaydes.kontent.network
+package com.ronieathaydes.kontent.network.http
 
 import org.koin.core.annotation.Named
 
