@@ -1,8 +1,8 @@
 package com.ronieathaydes.kontent.data.mastodon.timeline
 
-import com.ronieathaydes.kontent.data.mastodon.di.MastodonHttpClient
-import com.ronieathaydes.kontent.data.mastodon.model.status.StatusApiModel
-import com.ronieathaydes.kontent.data.mastodon.model.status.StatusApiModelMapper
+import com.ronieathaydes.kontent.data.mastodon.mapper.StatusApiModelMapper
+import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModel
+import com.ronieathaydes.kontent.data.mastodon.qualifier.MastodonHttpClient
 import com.ronieathaydes.kontent.domain.model.Status
 import com.ronieathaydes.kontent.network.http.bodyAsResult
 import io.ktor.client.HttpClient

@@ -6,10 +6,11 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
-import com.ronieathaydes.kontent.presentation.settings.SettingsRoute
-import com.ronieathaydes.kontent.presentation.settings.ui.SettingsScreen
-import com.ronieathaydes.kontent.presentation.timeline.TimelineRoute
-import com.ronieathaydes.kontent.presentation.timeline.ui.TimelineScreen
+import com.ronieathaydes.kontent.feature.settings.navigation.SettingsRoute
+import com.ronieathaydes.kontent.feature.settings.presentation.ui.SettingsScreen
+import com.ronieathaydes.kontent.feature.timeline.navigation.TimelineRoute
+import com.ronieathaydes.kontent.feature.timeline.presentation.ui.TimelineScreen
+import com.ronieathaydes.kontent.navigation.AppRoute
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
 import org.koin.ksp.generated.configurationModules
