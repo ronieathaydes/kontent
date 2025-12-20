@@ -1,5 +1,6 @@
 package com.ronieathaydes.kontent.feature.timeline.presentation.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
@@ -36,6 +37,7 @@ fun TimelineScreen(
     TimelineScreen(
         uiState = uiState,
         onSettingsClick = onSettingsClick,
+        onRefresh = viewModel::onRefresh,
     )
 }
 
@@ -44,49 +46,48 @@ fun TimelineScreen(
 private fun TimelineScreen(
     uiState: TimelineUiState,
     onSettingsClick: () -> Unit,
+    onRefresh: () -> Unit,
 ) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = stringResource(
-                            resource = Res.string.timeline_title,
-                        ),
+                        text = stringResource(Res.string.timeline_title),
                     )
                 },
                 actions = {
                     IconButton(onClick = onSettingsClick) {
                         Icon(
                             imageVector = Icons.Default.Settings,
-                            contentDescription = stringResource(
-                                resource = Res.string.settings_title,
-                            ),
+                            contentDescription = stringResource(Res.string.settings_title),
                         )
                     }
                 },
             )
         },
         content = { paddingValues ->
-            when (uiState) {
-                Loading -> {
-                    TimelineLoading(
-                        modifier = Modifier.padding(paddingValues),
-                    )
-                }
+            Box(
+                modifier = Modifier.padding(paddingValues),
+            ) {
+                when (uiState) {
+                    Loading -> {
+                        TimelineLoading()
+                    }
 
-                is Content -> {
-                    TimelineContent(
-                        uiState = uiState,
-                        modifier = Modifier.padding(paddingValues),
-                    )
-                }
+                    is Content -> {
+                        TimelineContent(
+                            uiState = uiState,
+                            onPullToRefresh = onRefresh,
+                        )
+                    }
 
-                is Error -> {
-                    TimelineError(
-                        uiState = uiState,
-                        modifier = Modifier.padding(paddingValues),
-                    )
+                    is Error -> {
+                        TimelineError(
+                            uiState = uiState,
+                            onRetryClick = onRefresh,
+                        )
+                    }
                 }
             }
         },
@@ -101,6 +102,7 @@ private fun TimelineScreenPreview(
     TimelineScreen(
         uiState = uiState,
         onSettingsClick = {},
+        onRefresh = {},
     )
 }
 

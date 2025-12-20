@@ -1,10 +1,12 @@
 <resources>
-    <!-- Common-->
+    <!-- Common -->
     <string name="back">Back</string>
+    <string name="error_message">Something went wrong.</string>
+    <string name="try_again">Try again</string>
 
-    <!-- Settings-->
+    <!-- Timeline -->
     <string name="timeline_title">Timeline</string>
 
-    <!-- Settings-->
+    <!-- Settings -->
     <string name="settings_title">Settings</string>
 </resources>

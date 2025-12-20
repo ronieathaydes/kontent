@@ -8,8 +8,9 @@ import org.koin.core.annotation.Factory
 class TimelineUiStateMapper(
     private val statusUiModelMapper: StatusUiModelMapper,
 ) {
-    fun map(statuses: List<Status>): TimelineUiState =
+    fun map(isLoading: Boolean, statuses: List<Status>): TimelineUiState.Content =
         TimelineUiState.Content(
+            isLoading = isLoading,
             statuses = statuses.map(statusUiModelMapper::map),
         )
 }
