@@ -37,7 +37,7 @@ fun TimelineScreen(
     TimelineScreen(
         uiState = uiState,
         onSettingsClick = onSettingsClick,
-        onPullToRefresh = viewModel::onPullToRefresh,
+        onRefresh = viewModel::onRefresh,
     )
 }
 
@@ -46,7 +46,7 @@ fun TimelineScreen(
 private fun TimelineScreen(
     uiState: TimelineUiState,
     onSettingsClick: () -> Unit,
-    onPullToRefresh: () -> Unit,
+    onRefresh: () -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -78,13 +78,14 @@ private fun TimelineScreen(
                     is Content -> {
                         TimelineContent(
                             uiState = uiState,
-                            onPullToRefresh = onPullToRefresh,
+                            onPullToRefresh = onRefresh,
                         )
                     }
 
                     is Error -> {
                         TimelineError(
                             uiState = uiState,
+                            onRetryClick = onRefresh,
                         )
                     }
                 }
@@ -101,7 +102,7 @@ private fun TimelineScreenPreview(
     TimelineScreen(
         uiState = uiState,
         onSettingsClick = {},
-        onPullToRefresh = {},
+        onRefresh = {},
     )
 }
 
