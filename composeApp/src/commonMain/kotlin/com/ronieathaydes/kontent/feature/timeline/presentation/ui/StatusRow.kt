@@ -98,13 +98,9 @@ private fun AuthorRow(
 private fun StatusRowPreview(
     @PreviewParameter(provider = StatusRowPreviewProvider::class) uiModel: StatusUiModel,
 ) {
-    Box(
-        modifier = Modifier.padding(all = DimensionTokens.Spacing.medium),
-    ) {
-        StatusRow(
-            uiModel = uiModel,
-        )
-    }
+    StatusRow(
+        uiModel = uiModel,
+    )
 }
 
 class StatusRowPreviewProvider : PreviewParameterProvider<StatusUiModel> {

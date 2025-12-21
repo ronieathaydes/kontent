@@ -2,7 +2,6 @@ package com.ronieathaydes.kontent.feature.settings.presentation.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.TextObfuscationMode
 import androidx.compose.material.icons.Icons
@@ -18,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.ronieathaydes.kontent.design.DimensionTokens
 import com.ronieathaydes.kontent.feature.settings.presentation.model.ConfigUiModel
 import com.ronieathaydes.kontent.resources.Res
 import com.ronieathaydes.kontent.resources.mastodon_config_access_token_description
@@ -79,13 +77,9 @@ fun ConfigRow(
 private fun ConfigRowPreview(
     @PreviewParameter(provider = ConfigRowPreviewProvider::class) uiModel: ConfigUiModel,
 ) {
-    Box(
-        modifier = Modifier.padding(all = DimensionTokens.Spacing.medium),
-    ) {
-        ConfigRow(
-            uiModel = uiModel,
-        )
-    }
+    ConfigRow(
+        uiModel = uiModel,
+    )
 }
 
 class ConfigRowPreviewProvider : PreviewParameterProvider<ConfigUiModel> {
