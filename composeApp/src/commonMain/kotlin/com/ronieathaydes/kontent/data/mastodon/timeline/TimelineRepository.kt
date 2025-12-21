@@ -1,7 +1,7 @@
 package com.ronieathaydes.kontent.data.mastodon.timeline
 
-import com.ronieathaydes.kontent.data.mastodon.mapper.StatusApiModelMapper
 import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModel
+import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModelMapper
 import com.ronieathaydes.kontent.data.mastodon.qualifier.MastodonHttpClient
 import com.ronieathaydes.kontent.domain.model.Status
 import com.ronieathaydes.kontent.network.http.bodyAsResult

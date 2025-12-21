@@ -1,6 +1,5 @@
-package com.ronieathaydes.kontent.data.mastodon.mapper
+package com.ronieathaydes.kontent.data.mastodon.model
 
-import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModel
 import com.ronieathaydes.kontent.domain.model.Status
 import org.koin.core.annotation.Factory
 

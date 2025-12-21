@@ -4,6 +4,10 @@
     <string name="error_message">Something went wrong.</string>
     <string name="try_again">Try again</string>
 
+    <!-- Mastodon -->
+    <string name="mastodon_config_access_token_name">Access token</string>
+    <string name="mastodon_config_access_token_description">Insert your access token here.</string>
+
     <!-- Timeline -->
     <string name="timeline_title">Timeline</string>
 
