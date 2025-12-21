@@ -24,7 +24,9 @@ import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 
 @Composable
-fun StatusRow(uiModel: StatusUiModel) {
+fun StatusRow(
+    uiModel: StatusUiModel,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
