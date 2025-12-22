@@ -8,8 +8,8 @@ import org.koin.core.annotation.Factory
 class SettingsUiStateMapper(
     private val configMapper: ConfigUiModelMapper,
 ) {
-    fun map(configs: List<Config>): SettingsUiState =
+    suspend fun map(configs: List<Config>): SettingsUiState =
         SettingsUiState.Content(
-            configs = configs.map(configMapper::map),
+            configs = configs.map { configMapper.map(it) },
         )
 }

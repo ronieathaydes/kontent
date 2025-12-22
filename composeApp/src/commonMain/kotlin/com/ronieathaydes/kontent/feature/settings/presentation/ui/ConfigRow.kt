@@ -18,10 +18,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.ronieathaydes.kontent.feature.settings.presentation.model.ConfigUiModel
-import com.ronieathaydes.kontent.resources.Res
-import com.ronieathaydes.kontent.resources.mastodon_config_access_token_description
-import com.ronieathaydes.kontent.resources.mastodon_config_access_token_name
-import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
@@ -39,7 +35,7 @@ fun ConfigRow(
                     modifier = Modifier.fillMaxWidth(),
                     label = {
                         Text(
-                            text = stringResource(uiModel.name),
+                            text = uiModel.name,
                         )
                     },
                     trailingIcon = {
@@ -57,7 +53,7 @@ fun ConfigRow(
                     supportingText = {
                         if (uiModel.description != null) {
                             Text(
-                                text = stringResource(uiModel.description),
+                                text = uiModel.description,
                             )
                         }
                     },
@@ -91,19 +87,17 @@ class ConfigRowPreviewProvider : PreviewParameterProvider<ConfigUiModel> {
 }
 
 val config = ConfigUiModel(
-    name = Res.string.mastodon_config_access_token_name,
-    key = "config.name",
-    value = TextFieldState(
-        initialText = "",
-    ),
+    name = "Config name",
+    key = "config.key",
+    value = TextFieldState(initialText = ""),
     description = null,
 )
 
 val configWithDescription = ConfigUiModel(
-    name = Res.string.mastodon_config_access_token_name,
-    key = "config.name",
+    name = "Config name",
+    key = "config.key",
     value = TextFieldState(
-        initialText = "",
+        initialText = "ConfigValue",
     ),
-    description = Res.string.mastodon_config_access_token_description,
+    description = "Config description",
 )

@@ -6,9 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.ronieathaydes.kontent.feature.settings.presentation.SettingsUiState.Content
 import com.ronieathaydes.kontent.feature.settings.presentation.model.ConfigUiModel
-import com.ronieathaydes.kontent.resources.Res
-import com.ronieathaydes.kontent.resources.mastodon_config_access_token_description
-import com.ronieathaydes.kontent.resources.mastodon_config_access_token_name
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
@@ -49,12 +46,12 @@ class SettingsContentPreviewProvider : PreviewParameterProvider<Content> {
 val contentUiState = Content(
     configs = listOf(
         ConfigUiModel(
-            name = Res.string.mastodon_config_access_token_name,
+            name = "Config name",
             key = "config.key",
             value = TextFieldState(
                 initialText = "ConfigValue",
             ),
-            description = Res.string.mastodon_config_access_token_description,
+            description = "Config description",
         ),
     ),
 )
