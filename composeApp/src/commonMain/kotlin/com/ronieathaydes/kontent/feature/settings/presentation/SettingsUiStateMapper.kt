@@ -1,15 +1,15 @@
 package com.ronieathaydes.kontent.feature.settings.presentation
 
-import com.ronieathaydes.kontent.domain.model.Config
-import com.ronieathaydes.kontent.feature.settings.presentation.model.ConfigUiModelMapper
+import com.ronieathaydes.kontent.domain.model.Settings
+import com.ronieathaydes.kontent.feature.settings.presentation.model.SettingsUiModelMapper
 import org.koin.core.annotation.Factory
 
 @Factory
 class SettingsUiStateMapper(
-    private val configMapper: ConfigUiModelMapper,
+    private val settingsUiModelMapper: SettingsUiModelMapper,
 ) {
-    suspend fun map(configs: List<Config>): SettingsUiState =
+    fun map(settings: Settings): SettingsUiState =
         SettingsUiState.Content(
-            configs = configs.map { configMapper.map(it) },
+            settings = settingsUiModelMapper.map(settings),
         )
 }

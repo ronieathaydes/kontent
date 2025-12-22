@@ -1,5 +1,6 @@
-package com.ronieathaydes.kontent.data.mastodon.model
+package com.ronieathaydes.kontent.data.mastodon.model.status
 
+import com.ronieathaydes.kontent.data.mastodon.model.account.AccountApiModel
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

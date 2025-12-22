@@ -1,4 +1,4 @@
-package com.ronieathaydes.kontent.data.mastodon.model
+package com.ronieathaydes.kontent.data.mastodon.model.account
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

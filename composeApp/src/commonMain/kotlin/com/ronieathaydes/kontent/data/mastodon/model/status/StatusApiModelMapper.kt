@@ -1,5 +1,6 @@
-package com.ronieathaydes.kontent.data.mastodon.model
+package com.ronieathaydes.kontent.data.mastodon.model.status
 
+import com.ronieathaydes.kontent.data.mastodon.model.account.AccountApiModelMapper
 import com.ronieathaydes.kontent.domain.model.Status
 import org.koin.core.annotation.Factory
 
@@ -9,7 +10,7 @@ class StatusApiModelMapper(
 ) {
     fun map(model: StatusApiModel): Status =
         Status(
-            content = model.content.takeIf { it.isNotEmpty() },
+            content = model.content.takeIf(String::isNotEmpty),
             author = accountApiModelMapper.map(model.account),
             sharedStatus = model.reblog?.let(::map),
         )

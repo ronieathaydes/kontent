@@ -1,11 +1,17 @@
 package com.ronieathaydes.kontent.feature.settings.presentation.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.ronieathaydes.kontent.design.DimensionTokens
 import com.ronieathaydes.kontent.feature.settings.presentation.SettingsUiState.Content
 import com.ronieathaydes.kontent.feature.settings.presentation.model.ConfigUiModel
+import com.ronieathaydes.kontent.feature.settings.presentation.model.SettingsUiModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
@@ -18,7 +24,14 @@ fun SettingsContent(
     Column(
         modifier = modifier,
     ) {
-        uiState.configs.forEach { config ->
+        Text(
+            text = uiState.settings.title,
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier
+                .padding(horizontal = DimensionTokens.Spacing.medium)
+                .fillMaxWidth(),
+        )
+        uiState.settings.configs.forEach { config ->
             ConfigRow(
                 uiModel = config,
             )
@@ -26,7 +39,7 @@ fun SettingsContent(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun SettingsContentPreview(
     @PreviewParameter(provider = SettingsContentPreviewProvider::class) uiState: Content,
@@ -44,14 +57,17 @@ class SettingsContentPreviewProvider : PreviewParameterProvider<Content> {
 }
 
 val contentUiState = Content(
-    configs = listOf(
-        ConfigUiModel(
-            name = "Config name",
-            key = "config.key",
-            value = TextFieldState(
-                initialText = "ConfigValue",
+    settings = SettingsUiModel(
+        title = "Provider",
+        configs = listOf(
+            ConfigUiModel(
+                name = "Config name",
+                key = "config.key",
+                value = TextFieldState(
+                    initialText = "ConfigValue",
+                ),
+                description = "Config description",
             ),
-            description = "Config description",
         ),
     ),
 )

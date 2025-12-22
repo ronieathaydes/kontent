@@ -1,7 +1,5 @@
-package com.ronieathaydes.kontent.data.mastodon.timeline
+package com.ronieathaydes.kontent.data.mastodon.model.status
 
-import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModel
-import com.ronieathaydes.kontent.data.mastodon.model.StatusApiModelMapper
 import com.ronieathaydes.kontent.data.mastodon.qualifier.MastodonHttpClient
 import com.ronieathaydes.kontent.domain.model.Status
 import com.ronieathaydes.kontent.network.http.bodyAsResult
@@ -10,7 +8,7 @@ import io.ktor.client.request.get
 import org.koin.core.annotation.Factory
 
 @Factory
-class TimelineRepository(
+class StatusRepository(
     @MastodonHttpClient private val httpClient: HttpClient,
     private val statusApiModelMapper: StatusApiModelMapper,
 ) {

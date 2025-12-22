@@ -27,6 +27,6 @@ class SettingsViewModel(
 
     private suspend fun getContent(): SettingsUiState =
         settingsUiStateMapper.map(
-            configs = mastodonKontentProvider.getConfigs(),
+            settings = mastodonKontentProvider.getSettings(),
         )
 }
