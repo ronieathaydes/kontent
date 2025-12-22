@@ -1,6 +1,5 @@
-package com.ronieathaydes.kontent.data.mastodon.mapper
+package com.ronieathaydes.kontent.data.mastodon.model.account
 
-import com.ronieathaydes.kontent.data.mastodon.model.AccountApiModel
 import com.ronieathaydes.kontent.domain.model.Account
 import org.koin.core.annotation.Factory
 
