@@ -5,7 +5,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.TextObfuscationMode
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -27,7 +28,7 @@ fun ConfigRow(
     uiModel: ConfigUiModel,
 ) {
     Box {
-        var isValueHidden by remember { mutableStateOf(true) }
+        var isValueVisible by remember { mutableStateOf(false) }
         ListItem(
             headlineContent = {
                 SecureTextField(
@@ -41,11 +42,15 @@ fun ConfigRow(
                     trailingIcon = {
                         IconButton(
                             onClick = {
-                                isValueHidden = !isValueHidden
+                                isValueVisible = !isValueVisible
                             },
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Lock,
+                                imageVector = if (isValueVisible) {
+                                    Icons.Filled.VisibilityOff
+                                } else {
+                                    Icons.Filled.Visibility
+                                },
                                 contentDescription = null,
                             )
                         }
@@ -57,10 +62,10 @@ fun ConfigRow(
                             )
                         }
                     },
-                    textObfuscationMode = if (isValueHidden) {
-                        TextObfuscationMode.RevealLastTyped
-                    } else {
+                    textObfuscationMode = if (isValueVisible) {
                         TextObfuscationMode.Visible
+                    } else {
+                        TextObfuscationMode.RevealLastTyped
                     },
                 )
             },
