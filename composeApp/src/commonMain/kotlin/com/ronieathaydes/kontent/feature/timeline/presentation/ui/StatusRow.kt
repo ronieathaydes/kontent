@@ -24,7 +24,9 @@ import org.jetbrains.compose.ui.tooling.preview.PreviewParameter
 import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 
 @Composable
-fun StatusRow(uiModel: StatusUiModel) {
+fun StatusRow(
+    uiModel: StatusUiModel,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -96,13 +98,9 @@ private fun AuthorRow(
 private fun StatusRowPreview(
     @PreviewParameter(provider = StatusRowPreviewProvider::class) uiModel: StatusUiModel,
 ) {
-    Box(
-        modifier = Modifier.padding(all = DimensionTokens.Spacing.medium),
-    ) {
-        StatusRow(
-            uiModel = uiModel,
-        )
-    }
+    StatusRow(
+        uiModel = uiModel,
+    )
 }
 
 class StatusRowPreviewProvider : PreviewParameterProvider<StatusUiModel> {
