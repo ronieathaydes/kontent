@@ -7,9 +7,17 @@ import org.koin.core.annotation.Factory
 class SettingsUiModelMapper(
     private val configMapper: ConfigUiModelMapper,
 ) {
-    fun map(settings: Settings): SettingsUiModel =
+    fun map(
+        settings: Settings,
+        configVisibilities: Map<String, Boolean>,
+    ): SettingsUiModel =
         SettingsUiModel(
             title = settings.title,
-            configs = settings.configs.map(configMapper::map),
+            configs = settings.configs.map { config ->
+                configMapper.map(
+                    config = config,
+                    isVisible = configVisibilities[config.key] ?: false,
+                )
+            },
         )
 }
