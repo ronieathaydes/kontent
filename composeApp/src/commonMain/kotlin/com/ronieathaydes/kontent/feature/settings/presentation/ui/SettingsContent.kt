@@ -20,7 +20,7 @@ import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 fun SettingsContent(
     uiState: Content,
     modifier: Modifier = Modifier,
-    onConfigVisibilityChange: (String, Boolean) -> Unit,
+    onConfigVisibilityClick: (String, Boolean) -> Unit,
 ) {
     Column(
         modifier = modifier,
@@ -35,7 +35,7 @@ fun SettingsContent(
         uiState.settings.configs.forEach { config ->
             ConfigRow(
                 uiModel = config,
-                onVisibilityChange = onConfigVisibilityChange,
+                onVisibilityClick = onConfigVisibilityClick,
             )
         }
     }
@@ -48,7 +48,7 @@ fun SettingsContentPreview(
 ) {
     SettingsContent(
         uiState = uiState,
-        onConfigVisibilityChange = { _, _ -> },
+        onConfigVisibilityClick = { _, _ -> },
     )
 }
 

@@ -35,7 +35,7 @@ class SettingsViewModel(
             emit(mastodonKontentProvider.getSettings())
         }
 
-    fun onConfigVisibilityChange(key: String, isVisible: Boolean) {
+    fun onConfigVisibilityClick(key: String, isVisible: Boolean) {
         configVisibilities.update { map ->
             map.toMutableMap().apply {
                 set(key, isVisible)

@@ -35,7 +35,7 @@ fun SettingsScreen(
     SettingsScreen(
         uiState = uiState,
         onBackClick = onBackClick,
-        onConfigVisibilityChange = viewModel::onConfigVisibilityChange,
+        onConfigVisibilityClick = viewModel::onConfigVisibilityClick,
     )
 }
 
@@ -44,7 +44,7 @@ fun SettingsScreen(
 fun SettingsScreen(
     uiState: SettingsUiState,
     onBackClick: () -> Unit,
-    onConfigVisibilityChange: (String, Boolean) -> Unit,
+    onConfigVisibilityClick: (String, Boolean) -> Unit,
 ) {
     Scaffold(
         topBar = {
@@ -76,7 +76,7 @@ fun SettingsScreen(
                     is SettingsUiState.Content -> {
                         SettingsContent(
                             uiState = uiState,
-                            onConfigVisibilityChange = onConfigVisibilityChange,
+                            onConfigVisibilityClick = onConfigVisibilityClick,
                         )
                     }
                 }
@@ -93,7 +93,7 @@ private fun SettingsScreenPreview(
     SettingsScreen(
         uiState = uiState,
         onBackClick = {},
-        onConfigVisibilityChange = { _, _ -> },
+        onConfigVisibilityClick = { _, _ -> },
     )
 }
 

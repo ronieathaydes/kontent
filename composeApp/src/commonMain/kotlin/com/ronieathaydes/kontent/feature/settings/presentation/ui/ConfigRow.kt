@@ -23,7 +23,7 @@ import org.jetbrains.compose.ui.tooling.preview.PreviewParameterProvider
 @Composable
 fun ConfigRow(
     uiModel: ConfigUiModel,
-    onVisibilityChange: (String, Boolean) -> Unit,
+    onVisibilityClick: (String, Boolean) -> Unit,
 ) {
     Box {
         ListItem(
@@ -38,7 +38,7 @@ fun ConfigRow(
                     },
                     trailingIcon = {
                         IconButton(
-                            onClick = { onVisibilityChange(uiModel.key, !uiModel.isVisible) },
+                            onClick = { onVisibilityClick(uiModel.key, !uiModel.isVisible) },
                         ) {
                             Icon(
                                 imageVector = if (uiModel.isVisible) {
@@ -75,7 +75,7 @@ private fun ConfigRowPreview(
 ) {
     ConfigRow(
         uiModel = uiModel,
-        onVisibilityChange = { _, _ -> },
+        onVisibilityClick = { _, _ -> },
     )
 }
 
