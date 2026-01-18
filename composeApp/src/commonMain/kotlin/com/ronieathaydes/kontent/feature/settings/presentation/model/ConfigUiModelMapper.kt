@@ -6,7 +6,7 @@ import org.koin.core.annotation.Factory
 
 @Factory
 class ConfigUiModelMapper {
-    fun map(config: Config): ConfigUiModel =
+    fun map(config: Config, isVisible: Boolean): ConfigUiModel =
         ConfigUiModel(
             name = config.name,
             key = config.key,
@@ -14,5 +14,6 @@ class ConfigUiModelMapper {
                 initialText = config.value,
             ),
             description = config.description,
+            isVisible = isVisible,
         )
 }

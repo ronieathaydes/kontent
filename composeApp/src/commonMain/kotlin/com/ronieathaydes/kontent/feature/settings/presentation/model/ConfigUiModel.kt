@@ -7,4 +7,5 @@ data class ConfigUiModel(
     val key: String,
     val value: TextFieldState,
     val description: String?,
+    val isVisible: Boolean,
 )

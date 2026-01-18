@@ -8,8 +8,11 @@ import org.koin.core.annotation.Factory
 class SettingsUiStateMapper(
     private val settingsUiModelMapper: SettingsUiModelMapper,
 ) {
-    fun map(settings: Settings): SettingsUiState =
+    fun map(
+        settings: Settings,
+        configVisibilities: Map<String, Boolean>,
+    ): SettingsUiState =
         SettingsUiState.Content(
-            settings = settingsUiModelMapper.map(settings),
+            settings = settingsUiModelMapper.map(settings, configVisibilities),
         )
 }
