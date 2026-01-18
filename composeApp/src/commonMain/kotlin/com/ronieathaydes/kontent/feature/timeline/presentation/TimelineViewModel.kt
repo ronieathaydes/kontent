@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
@@ -32,24 +33,18 @@ class TimelineViewModel(
     private val refreshCount = MutableStateFlow(0)
     private val isLoading = MutableStateFlow(false)
     private val statuses: Flow<Result<List<Status>?>> = refreshCount
-        .onEach {
-            isLoading.emit(true)
-        }.flatMapLatest {
-            getContentFlow()
-        }
-        .onEach {
-            isLoading.emit(false)
-        }
+        .onEach { isLoading.emit(true) }
+        .flatMapLatest { getContentFlow() }
+        .onEach { isLoading.emit(false) }
+        .catch { emit(Result.failure(it)) }
         .stateIn(
             scope = viewModelScope,
             started = WhileSubscribed(stopTimeoutMillis = 5_000),
             initialValue = Result.success(null),
         )
 
-    val uiState: StateFlow<TimelineUiState> =
-        combine(isLoading, statuses) { isLoading, result ->
-            mapStatusesResult(isLoading, result)
-        }.stateIn(
+    val uiState: StateFlow<TimelineUiState> = combine(isLoading, statuses, ::mapStatusesResult)
+        .stateIn(
             scope = viewModelScope,
             started = WhileSubscribed(stopTimeoutMillis = 5_000),
             initialValue = Loading,
